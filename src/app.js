@@ -1,3 +1,13 @@
+function newTime(timestamp){
+    let date=new Date(timestamp);
+    let hours=date.getHours();
+    if(hours<10){hours=`0${hours}`}
+let minutes=date.getMinutes();
+if (minutes<10){minutes=`0${minutes}`}
+let days=["sunday","monday","tuesday","wednesday","thursday","friday","saturday"]
+let day=days[date.getDay()];
+return`${day} ${hours}:${minutes}`
+}
 function displayWeather(response)
 {console.log(response.data)
     let cityName=document.querySelector("#city");
@@ -9,7 +19,9 @@ newTemp.innerHTML=Math.round(response.data.main.temp);
 let windspeed=document.querySelector("#wind");
 windspeed.innerHTML=Math.round(response.data.wind.speed);
 let hum=document.querySelector("#humidity");
-hum.innerHTML=response.data.main.humidity;}
+hum.innerHTML=response.data.main.humidity;
+let time=document.querySelector("#date");
+time.innerHTML=newTime(response.data.dt * 1000 )}
 
 let apikey = "b40b135798f82a05aed08769f9275f50";
 let city="france";

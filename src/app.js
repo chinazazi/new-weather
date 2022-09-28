@@ -21,7 +21,12 @@ windspeed.innerHTML=Math.round(response.data.wind.speed);
 let hum=document.querySelector("#humidity");
 hum.innerHTML=response.data.main.humidity;
 let time=document.querySelector("#date");
-time.innerHTML=newTime(response.data.dt * 1000 )}
+time.innerHTML=newTime(response.data.dt * 1000 );
+let icon=document.querySelector("#image");
+let picture=response.data.weather[0].icon;
+icon.setAttribute("src", `http://openweathermap.org/img/wn/${picture}@2x.png`);
+icon.setAttribute("alt", "response.data.weather[0].description");
+}
 
 let apikey = "b40b135798f82a05aed08769f9275f50";
 let city="france";

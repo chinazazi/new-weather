@@ -28,7 +28,16 @@ icon.setAttribute("src", `http://openweathermap.org/img/wn/${picture}@2x.png`);
 icon.setAttribute("alt", "response.data.weather[0].description");
 }
 
+function citySearch(city){
 let apikey = "b40b135798f82a05aed08769f9275f50";
-let city="france";
   let api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apikey}&units=metric`;
-axios.get(api).then(displayWeather);
+axios.get(api).then(displayWeather);}
+
+function search(event){event.preventDefault();
+let place=document.querySelector("#cityInput");
+citySearch(place.value);}
+
+citySearch("paris");
+
+let searching=document.querySelector("#searchInput");
+searching.addEventListener("submit",search);

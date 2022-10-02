@@ -26,7 +26,7 @@ let icon=document.querySelector("#image");
 let picture=response.data.weather[0].icon;
 icon.setAttribute("src", `http://openweathermap.org/img/wn/${picture}@2x.png`);
 icon.setAttribute("alt", "response.data.weather[0].description");
-}
+celsiustemp=Math.round(response.data.main.temp);}
 
 function citySearch(city){
 let apikey = "b40b135798f82a05aed08769f9275f50";
@@ -37,7 +37,28 @@ function search(event){event.preventDefault();
 let place=document.querySelector("#cityInput");
 citySearch(place.value);}
 
-citySearch("paris");
 
 let searching=document.querySelector("#searchInput");
 searching.addEventListener("submit",search);
+
+function newFarenheit(event){event.preventDefault();
+    let temperatureElement=document.querySelector("#temperature");
+    let farenheitTemp=(celsiustemp*9)/5 + 32;
+    temperatureElement.innerHTML=Math.round(farenheitTemp);
+    
+}
+
+let farenheitLink=document.querySelector("#farenheit");
+farenheitLink.addEventListener("click", newFarenheit);
+
+function newcelsius(event){event.preventDefault();
+let temperatureElement=document.querySelector("#temperature")
+temperatureElement.innerHTML=Math.round(celsiustemp);
+}
+
+let CelsiusLink=document.querySelector("#celsius");
+CelsiusLink.addEventListener("click", newcelsius);
+
+let celsiustemp=null;
+
+citySearch("paris");

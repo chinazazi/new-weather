@@ -45,6 +45,8 @@ function newFarenheit(event){event.preventDefault();
     let temperatureElement=document.querySelector("#temperature");
     let farenheitTemp=(celsiustemp*9)/5 + 32;
     temperatureElement.innerHTML=Math.round(farenheitTemp);
+    CelsiusLink.classList.add("active");
+    farenheitLink.classList.remove("active");
     
 }
 
@@ -54,6 +56,8 @@ farenheitLink.addEventListener("click", newFarenheit);
 function newcelsius(event){event.preventDefault();
 let temperatureElement=document.querySelector("#temperature")
 temperatureElement.innerHTML=Math.round(celsiustemp);
+CelsiusLink.classList.remove("active");
+    farenheitLink.classList.add("active");
 }
 
 let CelsiusLink=document.querySelector("#celsius");

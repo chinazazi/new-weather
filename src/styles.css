@@ -46,8 +46,9 @@ line-height: 19px;}
 
 li::first-letter{text-transform: capitalize;}
 
-#celsius{cursor:default;
+.active{cursor:default;
 color: black;
 text-decoration: none;}
 
+#celsius{text-decoration: none;}
 #farenheit{text-decoration: none;}

@@ -65,4 +65,28 @@ CelsiusLink.addEventListener("click", newcelsius);
 
 let celsiustemp=null;
 
+function displayforecast(){
+    let forecastelement=document.querySelector("#forecast");
+    let forecastHTML=`<div class="row">`;
+    let days=["thur", "fri", "sat", "sun"];
+    days.forEach(function (day){
+    forecastHTML=forecastHTML + 
+`<div class="col-2">
+  <h4>
+   <strong>${day}</strong>
+  </h4>
+  <div id="emoji">
+  🔆
+  </div>
+  <div>
+    <span id="tempMax">12°</span> <span id="tempMini">13°</span>
+  </div>
+</div>`});
+    
+forecastHTML=forecastHTML+`</div>`;
+
+    forecastelement.innerHTML=forecastHTML;}
+
+
 citySearch("paris");
+displayforecast();

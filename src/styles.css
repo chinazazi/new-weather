@@ -17,7 +17,7 @@ top:-20px;
 left:8px;}
 
 #temperature{line-height: 1;
-    font-size: 64px;
+    font-size: 60px;
 font-weight: 400;
 color: black;}
 
@@ -28,8 +28,8 @@ top:-32px;
 
 h1 {
     color: rgb(252, 95, 17);
-    font-size: 24px;
-    font-weight: 100;
+    font-size: 30px;
+    font-weight: 600;
     line-height: 28px;
     margin-bottom: 0;
 }
@@ -52,3 +52,13 @@ text-decoration: none;}
 
 #celsius{text-decoration: none;}
 #farenheit{text-decoration: none;}
+
+.weatherforecast{margin-top: 22px;
+text-align:center;}
+
+h4{text-transform: capitalize;
+font-size: 22px;
+color:#0d6efd;
+}
+
+#tempMini{opacity:0.6;}

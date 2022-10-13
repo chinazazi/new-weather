@@ -8,8 +8,7 @@ let days=["sunday","monday","tuesday","wednesday","thursday","friday","saturday"
 let day=days[date.getDay()];
 return`${day} ${hours}:${minutes}`
 }
-function displayWeather(response)
-{console.log(response.data)
+function displayWeather(response){
     let cityName=document.querySelector("#city");
     cityName.innerHTML=response.data.name;
     let desc=document.querySelector("#description");
@@ -26,7 +25,16 @@ let icon=document.querySelector("#image");
 let picture=response.data.weather[0].icon;
 icon.setAttribute("src", `http://openweathermap.org/img/wn/${picture}@2x.png`);
 icon.setAttribute("alt", "response.data.weather[0].description");
-celsiustemp=Math.round(response.data.main.temp);}
+celsiustemp=Math.round(response.data.main.temp);
+
+newForecast(response.data.coord);}
+
+function newForecast(coordinates){
+
+    let apikey=`b40b135798f82a05aed08769f9275f50`;
+    let api=`https://api.openweathermap.org/data/2.5/onecall?lat=48.8534&lon=2.3488&appid=b40b135798f82a05aed08769f9275f50&units=metric`
+axios.get(api).then(displayforecast);
+}
 
 function citySearch(city){
 let apikey = "b40b135798f82a05aed08769f9275f50";
@@ -65,23 +73,32 @@ CelsiusLink.addEventListener("click", newcelsius);
 
 let celsiustemp=null;
 
-function displayforecast(){
+function formatday(timestamp){
+    let date=new Date(timestamp*1000);
+    let day=date.getDay();
+    let days=["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"];
+
+    return days[day];
+}
+
+function displayforecast(response){
+    forecast=response.data.daily;
     let forecastelement=document.querySelector("#forecast");
     let forecastHTML=`<div class="row">`;
-    let days=["thur", "fri", "sat", "sun"];
-    days.forEach(function (day){
+    forecast.forEach(function (forecastday, index)
+    {if (index < 6)
+        {
     forecastHTML=forecastHTML + 
 `<div class="col-2">
   <h4>
-   <strong>${day}</strong>
+   <strong>${formatday(forecastday.dt)}</strong>
   </h4>
-  <div id="emoji">
-  🔆
-  </div>
+  <img src=
+  "https://openweathermap.org/img/wn/${forecastday.weather[0].icon}@2x.png" width=42/>
   <div>
-    <span id="tempMax">12°</span> <span id="tempMini">13°</span>
+   <span id="tempMax">${Math.round(forecastday.temp.max)}</span> <span id="tempMini">${Math.round(forecastday.temp.min)}</span>
   </div>
-</div>`});
+</div>`}});
     
 forecastHTML=forecastHTML+`</div>`;
 
@@ -89,4 +106,3 @@ forecastHTML=forecastHTML+`</div>`;
 
 
 citySearch("paris");
-displayforecast();

@@ -1,9 +1,10 @@
 body{font-family: arial, sans-serif;}
 
-.appWrapper{max-width: 600px;
+.appWrapper{
+    max-width: 600px;
 margin: 30px auto;}
 
-.weatherApp{
+.weatherApp{background-image: linear-gradient(white, #0dc5fd, white);
 padding:20px;
 border:1px solid #dadde1;
 border-radius: 5px;}
@@ -62,3 +63,10 @@ color:#0d6efd;
 }
 
 #tempMini{opacity:0.6;}
+
+#btn{border-radius: 5px;
+    border: 2px solid #0d6efd;
+    background-color: #0dcaf0;;
+    position: relative;
+    top: -160px;
+    left: 250px;}

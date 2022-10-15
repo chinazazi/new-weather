@@ -32,8 +32,8 @@ newForecast(response.data.coord);}
 function newForecast(coordinates){
 
     let apikey=`b40b135798f82a05aed08769f9275f50`;
-    let api=`https://api.openweathermap.org/data/2.5/onecall?lat=48.8534&lon=2.3488&appid=b40b135798f82a05aed08769f9275f50&units=metric`
-axios.get(api).then(displayforecast);
+    let api=`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apikey}&units=metric`;
+    axios.get(api).then(displayforecast);
 }
 
 function citySearch(city){
@@ -98,11 +98,24 @@ function displayforecast(response){
   <div>
    <span id="tempMax">${Math.round(forecastday.temp.max)}</span> <span id="tempMini">${Math.round(forecastday.temp.min)}</span>
   </div>
-</div>`}});
+</div>`;}});
     
 forecastHTML=forecastHTML+`</div>`;
 
     forecastelement.innerHTML=forecastHTML;}
 
+function current(position) {
+  console.log(position);
+  let apikey = "b40b135798f82a05aed08769f9275f50";
+  let api = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apikey}&units=metric`;
+  axios.get(api).then(displayWeather);
+}
+function toclick(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(current);
+}
+
+let button = document.querySelector("#btn");
+button.addEventListener("click", toclick);
 
 citySearch("paris");

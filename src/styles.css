@@ -4,7 +4,7 @@ body{font-family: arial, sans-serif;}
     max-width: 600px;
 margin: 30px auto;}
 
-.weatherApp{background-image: linear-gradient(white, #0dc5fd, white);
+.weatherApp{background-image: linear-gradient(white,aliceblue, #0dc5fd, white);
 padding:20px;
 border:1px solid #dadde1;
 border-radius: 5px;}
